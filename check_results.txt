@@ -1,0 +1,13 @@
+$ svelte-kit sync && svelte-check --tsconfig ./tsconfig.json
+Loading svelte-check in workspace: d:\Projects\Personal_Project\pt_batuah_mandiri_persada\web_project
+Getting Svelte diagnostics...
+
+d:\Projects\Personal_Project\pt_batuah_mandiri_persada\web_project\[32msrc\routes\+page.svelte[39m:15:16
+[31mError[39m: Could not find a declaration file for module 'lite-youtube-embed'. 'd:/Projects/Personal_Project/pt_batuah_mandiri_persada/web_project/node_modules/lite-youtube-embed/src/lite-yt-embed.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/lite-youtube-embed` if it exists or add a new declaration (.d.ts) file containing `declare module 'lite-youtube-embed';` (ts)
+[36m		// though standard import in script works if it only runs on mount.
+		await import([35m'lite-youtube-embed'[36m);[39m
+
+====================================
+[31msvelte-check found 1 error and 0 warnings in 1 file
+[39merror: script "check" exited with code 1

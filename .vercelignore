@@ -1,0 +1,15 @@
+node_modules
+.git
+.svelte-kit
+.vercel
+/build
+/docs
+/resources
+.agent
+.vscode
+Agent.md
+batuah_engineering_prd.md
+.env
+.env.*
+check_results.txt
+help.txt

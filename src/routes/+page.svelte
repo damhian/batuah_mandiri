@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
 	import { onMount } from 'svelte';
-	import { gsap } from 'gsap';
-	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 	import { lang } from '$lib/lang';
 	import type { PageData } from './$types';
 
@@ -10,13 +8,12 @@
 
 	let heroTitle: HTMLElement;
 	let statsSection: HTMLElement;
-
-	// Register GSAP plugins
-	if (typeof window !== 'undefined') {
-		gsap.registerPlugin(ScrollTrigger);
-	}
-
+	
 	onMount(async () => {
+		const {gsap} = await import ('gsap')
+		const {ScrollTrigger} = await import ('gsap/ScrollTrigger');
+		
+		gsap.registerPlugin(ScrollTrigger);
 
 		// GSAP Reveal for Hero
 		gsap.from(heroTitle, {

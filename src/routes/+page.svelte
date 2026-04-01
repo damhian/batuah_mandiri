@@ -42,14 +42,58 @@
 <div class="relative min-h-screen overflow-hidden -mt-16 lg:-mt-20">
 	<!-- Background Video -->
 	<div class="absolute inset-0 z-0 overflow-hidden bg-industrial-black pointer-events-none">
-		<video
-			src="/hero_bg.mp4#t=25"
-			autoplay
-			loop
-			muted
-			playsinline
-			class="absolute inset-0 w-full h-full object-cover pointer-events-none"
-		></video>
+		{#if data.profile?.hero_video_youtube_url}
+			{@const url = data.profile.hero_video_youtube_url}
+			{#if url.includes('youtube.com') || url.includes('youtu.be')}
+				<!-- YouTube Player with 1.4x scaling to crop UI -->
+				{@const rawId = url.includes('v=') ? url.split('v=')[1]?.split('&')[0] : url.split('/').pop()}
+				{@const videoId = rawId ? rawId.split('?')[0] : ''}
+				<div class="absolute w-[150vw] h-[150vh] inset-0 flex items-center justify-center pointer-events-none overflow-hidden scale-[1.4]">
+					<iframe
+						src="https://www.youtube-nocookie.com/embed/{videoId}?autoplay=1&mute=1&loop=1&playlist={videoId}&start=25&controls=0&modestbranding=1&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&origin={typeof window !== 'undefined' ? window.location.origin : ''}"
+						title="Background Video"
+						class="w-[120vw] h-[120vh] min-w-[177.77vh] min-h-screen object-cover border-none"
+						allow="autoplay; encrypted-media; fullscreen"
+					></iframe>
+				</div>
+			{:else if url.includes('jumpshare.com')}
+				<!-- Jumpshare Player: Adjusted to fill screen as much as possible -->
+				<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+					<iframe 
+						src={url.includes('/embed/') ? url : url.replace('/v/', '/embed/')}
+						frameborder="0" 
+						allowfullscreen 
+						class="w-full h-full min-w-[177.77vh] min-h-screen scale-[1.1] border-none"
+						title="Background Video (Jumpshare)"
+					></iframe>
+				</div>
+			{:else if url.includes('drive.google.com')}
+				<!-- Google Drive Player: Using /preview for bypass of virus scan warnings on large files -->
+				{@const driveId = url.split('/d/')[1]?.split('/')[0]}
+				<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+					<iframe 
+						src="https://drive.google.com/file/d/{driveId}/preview"
+						frameborder="0" 
+						class="w-full h-full min-w-[177.77vh] min-h-screen scale-[1.2] border-none"
+						title="Background Video (Google Drive)"
+						allow="autoplay"
+					></iframe>
+				</div>
+			{:else}
+				<!-- Native Video Player (Supabase / Imgur / Local) -->
+				<video
+					src="{url}#t=25"
+					autoplay
+					loop
+					muted
+					playsinline
+					class="absolute inset-0 w-full h-full object-cover pointer-events-none"
+				></video>
+			{/if}
+		{:else}
+			<div class="h-full w-full bg-industrial-slate opacity-50"></div>
+		{/if}
+		
 		<!-- Adjusted overlay: Slightly more transparent to reveal machinery, but kept semi-dark for readability -->
 		 <div class="absolute inset-0 bg-linear-to-b from-industrial-black/30 via-transparent to-industrial-black/90 z-10"></div>
 	</div>

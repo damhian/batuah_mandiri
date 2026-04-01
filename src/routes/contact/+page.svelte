@@ -10,7 +10,7 @@
 	let formMessage = $state('');
 
 	const contactInfo = {
-		address: 'JL. YOS SUDARSO IV NO. 97, Sangatta Utara, Kutai Timur, Kalimantan Timur',
+		address: 'Jl. Sangga Buana II Selatan No. 01',	
 		phone: '+62 858-4502-0384',
 		email: 'batuahmandiripersada@gmail.com',
 		director: 'Ivanto Saputra'
@@ -21,23 +21,23 @@
 	<title>{$lang === 'en' ? 'Contact Us' : 'Kontak Kami'} | PT. Batuah Mandiri Persada</title>
 </svelte:head>
 
-<section class="bg-industrial-black pt-40 pb-32">
-	<div class="container mx-auto px-4">
-		<div class="grid gap-20 lg:grid-cols-2">
+<section class="bg-industrial-black pt-28 pb-16 sm:pt-32 sm:pb-24 lg:pt-40 lg:pb-32">
+	<div class="container mx-auto px-6">
+		<div class="grid gap-12 lg:gap-20 lg:grid-cols-2">
 			<!-- Contact Info -->
 			<div>
-				<h1 class="text-4xl font-black uppercase tracking-tighter md:text-7xl text-white">
+				<h1 class="text-3xl font-black uppercase tracking-tighter sm:text-4xl md:text-5xl lg:text-7xl text-white">
 					{$lang === 'en' ? 'Let\'s' : 'Ayo'} <span class="text-industrial-yellow">{$lang === 'en' ? 'Connect' : 'Bicara'}</span>
 				</h1>
-				<p class="mt-8 text-lg text-white/60 leading-relaxed max-w-xl uppercase tracking-widest font-bold">
+				<p class="mt-4 text-sm text-white/60 leading-relaxed max-w-xl uppercase tracking-widest font-bold sm:mt-6 sm:text-base lg:mt-8 lg:text-lg">
 					{$lang === 'en' ? 'Ready to mobilize your project with the industry\'s most reliable fleet.' : 'Siap memobilisasi proyek Anda dengan armada paling andal di industri.'}
 				</p>
 
-				<div class="mt-20 space-y-12">
+				<div class="mt-12 space-y-8 sm:mt-16 sm:space-y-12 lg:mt-20">
 					<div class="flex items-start gap-8">
 						<div class="mt-1 h-2 w-2 bg-industrial-yellow"></div>
 						<div>
-							<h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 mb-4">{$lang === 'en' ? 'Global HQ' : 'Markas Besar'}</h4>
+							<h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 mb-4">{$lang === 'en' ? 'Global HQ' : 'Kantor Pusat'}</h4>
 							<p class="text-xs font-bold uppercase tracking-widest leading-loose text-white">
 								{contactInfo.address}
 							</p>
@@ -62,8 +62,8 @@
 					</div>
 				</div>
 
-				<div class="mt-20">
-					<div class="group relative aspect-video w-full overflow-hidden border border-white/5 bg-industrial-slate/10">
+				<div class="mt-12 sm:mt-16 lg:mt-20">
+					<div class="group relative w-full overflow-hidden border border-white/5 bg-industrial-slate/10" style="aspect-ratio: 16/10; min-height: 220px;">
 						<!-- Industrial Filtered Map -->
 						<iframe
 							title="PT. Batuah Mandiri Persada Location"
@@ -81,11 +81,11 @@
 						<div class="pointer-events-none absolute inset-0 border-8 border-industrial-black/50 mix-blend-multiply"></div>
 					</div>
 
-					<div class="mt-8">
+					<div class="mt-4 sm:mt-8">
 						<Button 
 							variant="outline"
 							onclick={() => window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.address)}`, '_blank')}
-							class="w-full h-16 border-industrial-yellow/20 text-[10px] font-black uppercase tracking-[0.3em] text-industrial-yellow hover:bg-industrial-yellow hover:text-black transition-all rounded-none"
+							class="w-full h-12 sm:h-14 lg:h-16 border-industrial-yellow/20 text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-industrial-yellow hover:bg-industrial-yellow hover:text-black transition-all rounded-none"
 						>
 							{$lang === 'en' ? 'Navigate to Site' : 'Navigasi ke Lokasi'}
 							<span class="ml-4">→</span>
@@ -95,8 +95,8 @@
 			</div>
 
 			<!-- Lead Form -->
-			<div class="border border-white/5 bg-industrial-slate/5 p-12">
-				<h3 class="text-sm font-black uppercase tracking-[0.4em] text-industrial-yellow mb-12">{$lang === 'en' ? 'Project Transmission' : 'Transmisi Proyek'}</h3>
+			<div class="border border-white/5 bg-industrial-slate/5 p-6 sm:p-8 lg:p-12">
+				<h3 class="text-xs font-black uppercase tracking-[0.3em] text-industrial-yellow mb-8 sm:text-sm sm:tracking-[0.4em] sm:mb-12">{$lang === 'en' ? 'Project Transmission' : 'Transmisi Proyek'}</h3>
 				
 				<form 
 					method="POST" 
@@ -159,7 +159,7 @@
 					<Button 
 						type="submit" 
 						disabled={submitting}
-						class="w-full bg-industrial-yellow h-20 text-[10px] font-black uppercase tracking-[0.4em] text-black hover:bg-white transition-all rounded-none disabled:opacity-50"
+						class="w-full bg-industrial-yellow h-14 sm:h-16 lg:h-20 text-[10px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-black hover:bg-white transition-all rounded-none disabled:opacity-50"
 					>
 						{submitting ? ($lang === 'en' ? 'TRANSMITTING...' : 'MENGIRIM...') : ($lang === 'en' ? 'Send Transmission' : 'Kirim Transmisi')}
 					</Button>

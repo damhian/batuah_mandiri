@@ -61,10 +61,10 @@
 	<title>{$lang === 'en' ? 'About Us' : 'Tentang Kami'} | PT. Batuah Mandiri Persada</title>
 </svelte:head>
 
-<section class="bg-industrial-black pt-40 pb-20">
-	<div class="container mx-auto px-4">
+<section class="bg-industrial-black pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pt-40 lg:pb-20">
+	<div class="container mx-auto px-6">
 		<div class="max-w-4xl">
-			<h1 class="text-4xl font-black uppercase tracking-tighter md:text-7xl lg:text-8xl text-white">
+			<h1 class="text-3xl font-black uppercase tracking-tighter sm:text-4xl md:text-7xl lg:text-8xl text-white">
 				{#if $lang === 'en'}
 					Built On <span class="text-industrial-yellow">Steel</span>,<br />
 					Driven By <span class="text-industrial-orange">Precision</span>.
@@ -73,25 +73,25 @@
 					Digerakkan Oleh <span class="text-industrial-orange">Presisi</span>.
 				{/if}
 			</h1>
-			<p class="mt-12 text-xl text-white/60 leading-relaxed md:text-2xl font-medium whitespace-pre-line">
+			<p class="mt-8 text-base text-white/60 leading-relaxed sm:text-lg md:text-xl lg:text-2xl font-medium whitespace-pre-line">
 				{$lang === 'en' ? data.profile?.about_us_body : data.profile?.about_us_body_id}
 			</p>
 		</div>
 	</div>
 </section>
 
-<section bind:this={contentSection} class="border-y border-white/5 bg-industrial-slate/5 py-32">
-	<div class="container mx-auto px-4">
+<section bind:this={contentSection} class="border-y border-white/5 bg-industrial-slate/5 py-16 sm:py-24 lg:py-32">
+	<div class="container mx-auto px-6">
 		<div class="grid gap-20 lg:grid-cols-2">
 			<div class="reveal-item">
 				<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-industrial-yellow mb-8">{$lang === 'en' ? 'Our Vision' : 'Visi Kami'}</h2>
-				<p class="text-2xl font-bold text-white leading-relaxed md:text-3xl uppercase tracking-tight whitespace-pre-line">
+				<p class="text-xl font-bold text-white leading-relaxed sm:text-2xl md:text-3xl uppercase tracking-tight whitespace-pre-line">
 					{$lang === 'en' ? data.profile?.vision_statement : data.profile?.vision_statement_id}
 				</p>
 			</div>
 			<div class="reveal-item">
 				<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-industrial-orange mb-8">{$lang === 'en' ? 'Our Mission' : 'Misi Kami'}</h2>
-				<p class="text-2xl font-bold text-white leading-relaxed md:text-3xl uppercase tracking-tight whitespace-pre-line">
+				<p class="text-xl font-bold text-white leading-relaxed sm:text-2xl md:text-3xl uppercase tracking-tight whitespace-pre-line">
 					{$lang === 'en' ? data.profile?.mission_statement : data.profile?.mission_statement_id}
 				</p>
 			</div>
@@ -99,12 +99,12 @@
 	</div>
 </section>
 
-<section bind:this={teamSection} class="py-32">
-	<div class="container mx-auto px-4">
+<section bind:this={teamSection} class="py-16 sm:py-24 lg:py-32">
+	<div class="container mx-auto px-6">
 		<div class="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
 			<div>
 				<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-industrial-yellow mb-4">{$lang === 'en' ? 'Leadership' : 'Kepemimpinan'}</h2>
-				<h3 class="text-3xl font-black uppercase text-white md:text-5xl">{$lang === 'en' ? 'The Engineering Mindset' : 'Berpikir Teknis'}</h3>
+				<h3 class="text-2xl font-black uppercase text-white sm:text-3xl md:text-5xl">{ $lang === 'en' ? 'The Engineering Mindset' : 'Berpikir Teknis'}</h3>
 			</div>
 			<div class="text-left md:text-right">
 				<span class="text-[10px] font-bold uppercase tracking-widest text-white/20">{$lang === 'en' ? 'Scroll to explore the team' : 'Gulir untuk melihat anggota tim'}</span>

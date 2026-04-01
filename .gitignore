@@ -10,6 +10,7 @@ node_modules
 
 .agent
 .vscode
+.knowledge
 /docs
 /node_modules
 

@@ -131,13 +131,13 @@
 					Powering <span class="text-industrial-yellow">Industry</span><br />
 					Moving <span class="text-industrial-orange">Ground</span>
 				{:else}
-					Kekuatan <span class="text-industrial-yellow">Industri</span><br />
-					Energi <span class="text-industrial-orange">Bumi</span>
+					Menggerakkan <span class="text-industrial-yellow">Industri</span><br />
+					Membuka <span class="text-industrial-orange">Jalan Baru</span>
 				{/if}
 			</h1>
 			<p class="mx-auto mt-6 max-w-2xl text-sm text-white/60 sm:text-base md:text-xl tracking-wide uppercase px-2">
 				{#if $lang === 'id'}
-					Solusi alat berat dan pertambangan terkemuka di jantung PT. Batuah Mandiri Persada.
+					Menghadirkan solusi alat berat dan pertambangan terkemuka sebagai jantung penggerak PT. Batuah Mandiri Persada.
 				{:else}
 					Leading heavy machinery and mining solutions at the heart of PT. Batuah Mandiri Persada.
 				{/if}

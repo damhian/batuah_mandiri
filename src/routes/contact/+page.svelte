@@ -169,6 +169,8 @@
 								<option value="Heavy Equipment Rental" class="bg-industrial-black text-white">{$lang === 'en' ? 'Heavy Equipment Rental' : 'Sewa Alat Berat'}</option>
 								<option value="Project Contracting" class="bg-industrial-black text-white">{$lang === 'en' ? 'Mining / Project Contracting' : 'Kontrak Proyek Pertambangan'}</option>
 								<option value="Equipment Maintenance" class="bg-industrial-black text-white">{$lang === 'en' ? 'Equipment Maintenance' : 'Pemeliharaan Alat Berat'}</option>
+								<option value="Technical Consultation" class="bg-industrial-black text-white">{$lang === 'en' ? 'Technical Consultation' : 'Konsultasi Teknis'}</option>
+								<option value="Website Development" class="bg-industrial-black text-white">{$lang === 'en' ? 'Website Development' : 'Pembangunan Website'}</option>
 								<option value="General Inquiry" class="bg-industrial-black text-white">{$lang === 'en' ? 'General Inquiry' : 'Pertanyaan Umum'}</option>
 							</select>
 							<!-- Custom Chevron -->

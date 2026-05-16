@@ -56,10 +56,30 @@
 
 			<!-- Desktop Nav -->
 			<nav class="hidden items-center gap-12 lg:flex">
-				<a href="/" class="text-[10px] font-black uppercase tracking-[0.4em] text-black/60 hover:text-industrial-yellow transition-colors">{$lang === 'en' ? 'Home' : 'Beranda'}</a>
-				<a href="/about" class="text-[10px] font-black uppercase tracking-[0.4em] text-black/60 hover:text-industrial-yellow transition-colors">{$lang === 'en' ? 'About' : 'Tentang'}</a>
-				<a href="/services" class="text-[10px] font-black uppercase tracking-[0.4em] text-black/60 hover:text-industrial-yellow transition-colors">{$lang === 'en' ? 'Services' : 'Layanan'}</a>
-				<a href="/contact" class="text-[10px] font-black uppercase tracking-[0.4em] text-black/60 hover:text-industrial-yellow transition-colors">{$lang === 'en' ? 'Contact' : 'Kontak'}</a>
+				<a href="/" class="relative py-2 text-[10px] font-black uppercase tracking-[0.4em] transition-all duration-300 hover:scale-110 {$page.url.pathname === '/' ? 'text-black' : 'text-black/60 hover:text-industrial-yellow'}">
+					{$lang === 'en' ? 'Home' : 'Beranda'}
+					{#if $page.url.pathname === '/'}
+						<span class="absolute bottom-0 left-0 w-full h-[2px] bg-industrial-yellow"></span>
+					{/if}
+				</a>
+				<a href="/about" class="relative py-2 text-[10px] font-black uppercase tracking-[0.4em] transition-all duration-300 hover:scale-110 {$page.url.pathname.startsWith('/about') ? 'text-black' : 'text-black/60 hover:text-industrial-yellow'}">
+					{$lang === 'en' ? 'About' : 'Tentang'}
+					{#if $page.url.pathname.startsWith('/about')}
+						<span class="absolute bottom-0 left-0 w-full h-[2px] bg-industrial-yellow"></span>
+					{/if}
+				</a>
+				<a href="/services" class="relative py-2 text-[10px] font-black uppercase tracking-[0.4em] transition-all duration-300 hover:scale-110 {$page.url.pathname.startsWith('/services') ? 'text-black' : 'text-black/60 hover:text-industrial-yellow'}">
+					{$lang === 'en' ? 'Services' : 'Layanan'}
+					{#if $page.url.pathname.startsWith('/services')}
+						<span class="absolute bottom-0 left-0 w-full h-[2px] bg-industrial-yellow"></span>
+					{/if}
+				</a>
+				<a href="/contact" class="relative py-2 text-[10px] font-black uppercase tracking-[0.4em] transition-all duration-300 hover:scale-110 {$page.url.pathname.startsWith('/contact') ? 'text-black' : 'text-black/60 hover:text-industrial-yellow'}">
+					{$lang === 'en' ? 'Contact' : 'Kontak'}
+					{#if $page.url.pathname.startsWith('/contact')}
+						<span class="absolute bottom-0 left-0 w-full h-[2px] bg-industrial-yellow"></span>
+					{/if}
+				</a>
 			</nav>
 
 			<div class="flex items-center gap-4">
@@ -111,16 +131,16 @@
 			<!-- Panel -->
 			<nav class="absolute top-16 right-0 w-full max-w-sm h-[calc(100dvh-4rem)] bg-industrial-black border-l border-white/10 flex flex-col p-8 overflow-y-auto animate-slide-in">
 				<div class="flex flex-col gap-1">
-					<a href="/" class="block py-4 text-sm font-black uppercase tracking-[0.3em] text-white/80 hover:text-industrial-yellow border-b border-white/5 transition-colors">
+					<a href="/" class="block py-4 text-sm font-black uppercase tracking-[0.3em] transition-all duration-300 origin-left hover:scale-[1.02] {$page.url.pathname === '/' ? 'text-industrial-yellow border-b border-industrial-yellow' : 'text-white/80 hover:text-industrial-yellow border-b border-white/5'}">
 						{$lang === 'en' ? 'Home' : 'Beranda'}
 					</a>
-					<a href="/about" class="block py-4 text-sm font-black uppercase tracking-[0.3em] text-white/80 hover:text-industrial-yellow border-b border-white/5 transition-colors">
+					<a href="/about" class="block py-4 text-sm font-black uppercase tracking-[0.3em] transition-all duration-300 origin-left hover:scale-[1.02] {$page.url.pathname.startsWith('/about') ? 'text-industrial-yellow border-b border-industrial-yellow' : 'text-white/80 hover:text-industrial-yellow border-b border-white/5'}">
 						{$lang === 'en' ? 'About' : 'Tentang'}
 					</a>
-					<a href="/services" class="block py-4 text-sm font-black uppercase tracking-[0.3em] text-white/80 hover:text-industrial-yellow border-b border-white/5 transition-colors">
+					<a href="/services" class="block py-4 text-sm font-black uppercase tracking-[0.3em] transition-all duration-300 origin-left hover:scale-[1.02] {$page.url.pathname.startsWith('/services') ? 'text-industrial-yellow border-b border-industrial-yellow' : 'text-white/80 hover:text-industrial-yellow border-b border-white/5'}">
 						{$lang === 'en' ? 'Services' : 'Layanan'}
 					</a>
-					<a href="/contact" class="block py-4 text-sm font-black uppercase tracking-[0.3em] text-white/80 hover:text-industrial-yellow border-b border-white/5 transition-colors">
+					<a href="/contact" class="block py-4 text-sm font-black uppercase tracking-[0.3em] transition-all duration-300 origin-left hover:scale-[1.02] {$page.url.pathname.startsWith('/contact') ? 'text-industrial-yellow border-b border-industrial-yellow' : 'text-white/80 hover:text-industrial-yellow border-b border-white/5'}">
 						{$lang === 'en' ? 'Contact' : 'Kontak'}
 					</a>
 				</div>
@@ -130,7 +150,7 @@
 						href="/contact"
 						class="w-full rounded-none bg-industrial-yellow h-14 text-[10px] font-black uppercase tracking-[0.2em] text-black hover:bg-white transition-all"
 					>
-						{$lang === 'en' ? 'Start Inquiry' : 'Konsultasi Proyek'}
+						{$lang === 'en' ? 'Project Consultation' : 'Konsultasi Proyek'}
 					</Button>
 				</div>
 			</nav>

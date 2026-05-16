@@ -65,17 +65,17 @@
 		{:else}
 			<div class="grid gap-px bg-white/5 md:grid-cols-2 lg:grid-cols-2 border border-white/5">
 				{#each data.services as item}
-					<div class="fleet-card flex flex-col gap-6 sm:gap-8 lg:gap-12 bg-industrial-black p-6 sm:p-8 lg:p-12 transition-all hover:bg-industrial-slate/20 md:flex-row group border-white/5 overflow-hidden">
-						<div class="aspect-video w-full overflow-hidden bg-industrial-slate md:aspect-square md:w-48 lg:w-64 border border-white/5">
+					<div class="fleet-card flex flex-col gap-6 sm:gap-8 lg:gap-12 bg-industrial-black p-6 sm:p-8 lg:p-12 transition-all duration-500 ease-out hover:bg-industrial-slate/20 md:flex-row group border-white/5 overflow-hidden">
+						<div class="aspect-video w-full overflow-hidden bg-industrial-slate/20 md:aspect-square md:w-48 lg:w-64 border border-white/5 grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out">
 							{#if item?.image_url}
 								<img 
 									src={item.image_url.startsWith('http') ? item.image_url : `/api/storage/${item.image_url}`} 
 									alt={$lang === 'en' ? (item.title_en || 'Service') : (item.title_id || 'Layanan')} 
-									class="h-full w-full object-cover grayscale brightness-75 transition-all group-hover:grayscale-0 group-hover:scale-110 duration-700" 
+									class="h-full w-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[1500ms] ease-out" 
 								/>
 							{:else}
 								<div class="w-full h-full flex items-center justify-center bg-industrial-slate opacity-20">
-									<span class="text-[8px] font-bold uppercase tracking-widest text-white">No Imagery Available</span>
+									<span class="text-[8px] font-bold uppercase tracking-widest text-white text-center">No Imagery Available</span>
 								</div>
 							{/if}
 						</div>

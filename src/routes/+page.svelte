@@ -147,7 +147,7 @@
 					href="/contact" 
 					class="w-full rounded-none bg-industrial-yellow h-12 sm:h-14 lg:h-16 text-[10px] font-black uppercase tracking-widest text-black hover:bg-white transition-all md:w-auto px-8 lg:px-12"
 				>
-					{$lang === 'en' ? 'Start Inquiry' : 'Konsultasi Proyek'}
+					{$lang === 'en' ? 'Project Consultation' : 'Konsultasi Proyek'}
 				</Button>
 				<Button 
 					href="/services" 
@@ -214,16 +214,44 @@
 				</div>
 				<div class="grid flex-1 gap-6 sm:grid-cols-2 sm:gap-8 w-full">
 					<div class="border border-white/5 bg-industrial-slate/5 p-6 sm:p-8 lg:p-10 hover:border-industrial-yellow transition-all">
-						<h3 class="text-sm font-black uppercase tracking-widest text-industrial-yellow">Vision</h3>
-						<p class="mt-4 text-[11px] font-bold uppercase tracking-widest text-white/40 leading-relaxed">
-							{$lang === 'en' ? data.profile?.vision_statement : data.profile?.vision_statement_id}
-						</p>
+						<h3 class="text-sm font-black uppercase tracking-widest text-industrial-yellow">{$lang === 'en' ? 'Vision' : 'Visi'}</h3>
+						<div class="mt-4 text-[11px] font-bold uppercase tracking-widest text-white/40 leading-relaxed flex flex-col gap-3">
+							{#each ($lang === 'en' ? data.profile?.vision_statement : data.profile?.vision_statement_id)?.split('\n') || [] as line}
+								{#if line.trim()}
+									<div class="flex gap-3">
+										{#if line.trim().match(/^[0-9]+[\.\)]/)}
+											<span class="text-industrial-yellow opacity-50 shrink-0">{line.trim().match(/^[0-9]+[\.\)]/)?.[0]}</span>
+											<span>{line.trim().replace(/^[0-9]+[\.\)]\s*/, '')}</span>
+										{:else if line.trim().match(/^[-•*]/)}
+											<span class="text-industrial-yellow opacity-50 shrink-0">•</span>
+											<span>{line.trim().replace(/^[-•*]\s*/, '')}</span>
+										{:else}
+											<span>{line.trim()}</span>
+										{/if}
+									</div>
+								{/if}
+							{/each}
+						</div>
 					</div>
 					<div class="border border-white/5 bg-industrial-slate/5 p-6 sm:p-8 lg:p-10 hover:border-industrial-orange transition-all">
-						<h3 class="text-sm font-black uppercase tracking-widest text-industrial-orange">Mission</h3>
-						<p class="mt-4 text-[11px] font-bold uppercase tracking-widest text-white/40 leading-relaxed">
-							{$lang === 'en' ? data.profile?.mission_statement : data.profile?.mission_statement_id}
-						</p>
+						<h3 class="text-sm font-black uppercase tracking-widest text-industrial-orange">{$lang === 'en' ? 'Mission' : 'Misi'}</h3>
+						<div class="mt-4 text-[11px] font-bold uppercase tracking-widest text-white/40 leading-relaxed flex flex-col gap-3">
+							{#each ($lang === 'en' ? data.profile?.mission_statement : data.profile?.mission_statement_id)?.split('\n') || [] as line}
+								{#if line.trim()}
+									<div class="flex gap-3">
+										{#if line.trim().match(/^[0-9]+[\.\)]/)}
+											<span class="text-industrial-orange opacity-50 shrink-0">{line.trim().match(/^[0-9]+[\.\)]/)?.[0]}</span>
+											<span>{line.trim().replace(/^[0-9]+[\.\)]\s*/, '')}</span>
+										{:else if line.trim().match(/^[-•*]/)}
+											<span class="text-industrial-orange opacity-50 shrink-0">•</span>
+											<span>{line.trim().replace(/^[-•*]\s*/, '')}</span>
+										{:else}
+											<span>{line.trim()}</span>
+										{/if}
+									</div>
+								{/if}
+							{/each}
+						</div>
 					</div>
 				</div>
 			</div>

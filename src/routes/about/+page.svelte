@@ -85,15 +85,43 @@
 		<div class="grid gap-20 lg:grid-cols-2">
 			<div class="reveal-item">
 				<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-industrial-yellow mb-8">{$lang === 'en' ? 'Our Vision' : 'Visi Kami'}</h2>
-				<p class="text-xl font-bold text-white leading-relaxed sm:text-2xl md:text-3xl uppercase tracking-tight whitespace-pre-line">
-					{$lang === 'en' ? data.profile?.vision_statement : data.profile?.vision_statement_id}
-				</p>
+				<div class="text-xl font-bold text-white leading-relaxed sm:text-2xl md:text-3xl uppercase tracking-tight flex flex-col gap-4">
+					{#each ($lang === 'en' ? data.profile?.vision_statement : data.profile?.vision_statement_id)?.split('\n') || [] as line}
+						{#if line.trim()}
+							<div class="flex gap-4 sm:gap-6">
+								{#if line.trim().match(/^[0-9]+[\.\)]/)}
+									<span class="text-industrial-yellow opacity-50 shrink-0">{line.trim().match(/^[0-9]+[\.\)]/)?.[0]}</span>
+									<span>{line.trim().replace(/^[0-9]+[\.\)]\s*/, '')}</span>
+								{:else if line.trim().match(/^[-•*]/)}
+									<span class="text-industrial-yellow opacity-50 shrink-0">•</span>
+									<span>{line.trim().replace(/^[-•*]\s*/, '')}</span>
+								{:else}
+									<span>{line.trim()}</span>
+								{/if}
+							</div>
+						{/if}
+					{/each}
+				</div>
 			</div>
 			<div class="reveal-item">
 				<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-industrial-orange mb-8">{$lang === 'en' ? 'Our Mission' : 'Misi Kami'}</h2>
-				<p class="text-xl font-bold text-white leading-relaxed sm:text-2xl md:text-3xl uppercase tracking-tight whitespace-pre-line">
-					{$lang === 'en' ? data.profile?.mission_statement : data.profile?.mission_statement_id}
-				</p>
+				<div class="text-xl font-bold text-white leading-relaxed sm:text-2xl md:text-3xl uppercase tracking-tight flex flex-col gap-4">
+					{#each ($lang === 'en' ? data.profile?.mission_statement : data.profile?.mission_statement_id)?.split('\n') || [] as line}
+						{#if line.trim()}
+							<div class="flex gap-4 sm:gap-6">
+								{#if line.trim().match(/^[0-9]+[\.\)]/)}
+									<span class="text-industrial-orange opacity-50 shrink-0">{line.trim().match(/^[0-9]+[\.\)]/)?.[0]}</span>
+									<span>{line.trim().replace(/^[0-9]+[\.\)]\s*/, '')}</span>
+								{:else if line.trim().match(/^[-•*]/)}
+									<span class="text-industrial-orange opacity-50 shrink-0">•</span>
+									<span>{line.trim().replace(/^[-•*]\s*/, '')}</span>
+								{:else}
+									<span>{line.trim()}</span>
+								{/if}
+							</div>
+						{/if}
+					{/each}
+				</div>
 			</div>
 		</div>
 	</div>
@@ -114,10 +142,10 @@
 		<!-- Team Grid: Responsive grid for all members -->
 		<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 			{#each data.team as member}
-				<div class="team-card group relative bg-industrial-slate/5 border border-white/5 p-8 transition-all hover:bg-white/5 hover:border-industrial-yellow">
-					<div class="aspect-square w-full overflow-hidden bg-industrial-slate/20 grayscale group-hover:grayscale-0 transition-all duration-700">
+				<div class="team-card group relative bg-industrial-slate/5 border border-white/5 p-8 transition-all duration-500 ease-out hover:bg-white/5 hover:border-industrial-yellow">
+					<div class="aspect-square w-full overflow-hidden bg-industrial-slate/20 grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out">
 						{#if member.profile_image_url}
-							<img src={member.profile_image_url} alt={member.name} class="h-full w-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700" />
+							<img src={member.profile_image_url} alt={member.name} class="h-full w-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[1500ms] ease-out" />
 						{:else}
 							<div class="flex h-full w-full flex-col items-center justify-center p-8 text-center bg-industrial-slate/10">
 								<svg class="h-16 w-16 mb-4 text-white/10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
@@ -131,9 +159,11 @@
 							{member.role_title}
 						</p>
 						<div class="mt-6 border-t border-white/5 pt-6">
-							<p class="text-[11px] font-bold uppercase tracking-widest text-white/40 leading-relaxed line-clamp-4 group-hover:line-clamp-none transition-all whitespace-pre-line">
-								{$lang === 'en' ? member.bio : (member.bio_id || member.bio)}
-							</p>
+							<div class="max-h-[4.5rem] group-hover:max-h-[500px] overflow-hidden transition-all duration-[1000ms] ease-in-out">
+								<p class="text-[11px] font-bold uppercase tracking-widest text-white/40 leading-relaxed whitespace-pre-line">
+									{$lang === 'en' ? member.bio : (member.bio_id || member.bio)}
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>

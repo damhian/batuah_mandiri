@@ -8,7 +8,9 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 export const actions: Actions = {
 	logout: async ({ locals }) => {
-		await locals.supabase.auth.signOut();
-		throw redirect(303, '/admin');
+		// scope: 'global' invalidates ALL refresh tokens for this user,
+		// not just the current session — prevents token reuse from other devices
+		await locals.supabase.auth.signOut({ scope: 'global' });
+		throw redirect(303, '/');
 	}
 };

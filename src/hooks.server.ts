@@ -15,13 +15,28 @@ export const handle: Handle = async ({ event, resolve }) => {
 	});
 
 	/**
-	 * a little helper that can be used in load functions and actions
+	 * Unlike getSession(), getUser() validates the token against the Supabase Auth server,
+	 * preventing forged cookie attacks. We still return the session for convenience,
+	 * but only after confirming the user is authentic.
 	 */
-	event.locals.getSession = async () => {
+	event.locals.safeGetSession = async () => {
 		const {
 			data: { session }
 		} = await event.locals.supabase.auth.getSession();
-		return session;
+
+		if (!session) return { session: null, user: null };
+
+		const {
+			data: { user },
+			error
+		} = await event.locals.supabase.auth.getUser();
+
+		if (error) {
+			// JWT validation failed — token is invalid or expired
+			return { session: null, user: null };
+		}
+
+		return { session, user };
 	};
 
 	return resolve(event, {

@@ -52,7 +52,9 @@
 		lg:static lg:translate-x-0 lg:top-0 lg:h-auto lg:min-h-screen lg:z-auto
 	">
 		<div class="hidden lg:flex items-center gap-4 mb-20">
-			<div class="h-8 w-8 bg-industrial-yellow"></div>
+			<div class="h-10 w-10 bg-white/35 p-1.5 flex items-center justify-center rounded-xl">
+				<img src="/images/logo.png" alt="PT. Batuah Mandiri Persada" class="h-full w-auto object-contain brightness-150" />
+			</div>
 			<span class="font-black uppercase tracking-widest text-sm">BMP Ops Panel</span>
 		</div>
 
@@ -66,7 +68,7 @@
 
 		<div class="mt-auto pt-20">
 			<form method="POST" action="/admin/dashboard?/logout">
-				<Button type="submit" variant="ghost" class="text-[10px] font-bold uppercase tracking-[.4em] text-red-500 hover:text-white transition-all p-0 h-auto">
+				<Button type="submit" variant="ghost" class="text-[10px] font-bold uppercase tracking-[.4em] text-red-500 hover:text-gray-200 hover:bg-red-700 transition-all px-4 py-2 rounded-3xl h-auto">
 					Logout System
 				</Button>
 			</form>

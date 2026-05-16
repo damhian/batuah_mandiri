@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ locals: { supabase, getSession } }) => {
+export const load: PageServerLoad = async ({ locals: { supabase, safeGetSession } }) => {
 	const { data: services, error: servicesError } = await supabase
 		.from('services')
 		.select('*')
@@ -12,8 +12,10 @@ export const load: PageServerLoad = async ({ locals: { supabase, getSession } })
 		throw error(500, 'Could not load services');
 	}
 
+	const { session } = await safeGetSession();
+
 	return {
 		services,
-		session: await getSession()
+		session
 	};
 };

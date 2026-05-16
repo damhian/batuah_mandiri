@@ -11,6 +11,7 @@ node_modules
 .agent
 .vscode
 .knowledge
+agent_template
 /docs
 /node_modules
 

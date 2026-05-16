@@ -1,4 +1,6 @@
-export const load = async ({ locals }) => {
+import type { PageServerLoad } from './$types';
+
+export const load: PageServerLoad = async ({ locals }) => {
 	const { data: profile } = await locals.supabase
 		.from('company_profile')
 		.select('*')

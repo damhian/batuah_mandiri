@@ -1,4 +1,4 @@
-import type { PageServerLoad } from './$types';
+import type { PageServerLoad, Actions } from './$types';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const { data: profile } = await locals.supabase
@@ -11,7 +11,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 	};
 };
 
-export const actions = {
+export const actions: Actions = {
 	update: async ({ request, locals }) => {
 		const formData = await request.formData();
 		const updates = {

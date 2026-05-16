@@ -48,8 +48,21 @@
 						<div class="mt-1 h-2 w-2 bg-industrial-orange"></div>
 						<div>
 							<h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 mb-4">{$lang === 'en' ? 'Direct Line' : 'Saluran Langsung'}</h4>
-							<p class="text-xl font-black text-white">{contactInfo.phone}</p>
-							<p class="mt-2 text-[10px] font-bold uppercase tracking-widest text-white/40">{contactInfo.email}</p>
+							<a 
+								href={`https://wa.me/${contactInfo.phone.replace(/[^0-9]/g, '')}`} 
+								target="_blank" 
+								rel="noopener noreferrer"
+								class="flex items-center gap-3 text-xl font-black text-white hover:text-industrial-yellow transition-colors group"
+							>
+								<svg class="w-6 h-6 text-industrial-yellow group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path d="M12.031 0C5.393 0 0 5.391 0 12.029c0 2.124.553 4.195 1.603 6.012L.266 23.32l5.421-1.423a11.986 11.986 0 0 0 6.344 1.802c6.638 0 12.03-5.39 12.03-12.028C24.061 5.391 18.67 0 12.031 0zm0 21.696a9.982 9.982 0 0 1-5.097-1.393l-.365-.217-3.791.995.998-3.696-.238-.378A9.974 9.974 0 0 1 2.003 12.03C2.003 6.495 6.498 2 12.031 2s10.028 4.495 10.028 10.028c0 5.534-4.495 10.028-10.028 10.028zm5.498-7.514c-.302-.15-1.782-.879-2.06-.98-.277-.1-.479-.15-.68.151-.202.301-.78 1.002-.956 1.203-.176.202-.353.226-.655.076-1.503-.75-2.585-1.436-3.565-3.136-.205-.355.203-.332.645-.98.151-.225.076-.427 0-.577-.076-.151-.68-1.631-.933-2.233-.245-.584-.492-.505-.68-.515-.176-.01-.378-.01-.58-.01-.202 0-.53.076-.806.377-.277.301-1.058 1.03-1.058 2.511 0 1.48 1.082 2.912 1.233 3.112.151.201 2.122 3.238 5.138 4.54 1.942.836 2.686.906 3.666.756.685-.106 2.06-.843 2.336-1.656.277-.814.277-1.511.202-1.656-.076-.146-.277-.221-.58-.372z"/>
+								</svg>
+								{contactInfo.phone}
+							</a>
+							<div class="mt-2 space-y-2">
+								<p class="text-[10px] font-bold uppercase tracking-widest text-industrial-yellow">batuah@batuahmandiri.id <span class="text-white/40">(OFFICIAL)</span></p>
+								<p class="text-[10px] font-bold uppercase tracking-widest text-white/40">{contactInfo.email}</p>
+							</div>
 						</div>
 					</div>
 
@@ -88,7 +101,6 @@
 							class="w-full h-12 sm:h-14 lg:h-16 border-industrial-yellow/20 text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-industrial-yellow hover:bg-industrial-yellow hover:text-black transition-all rounded-none"
 						>
 							{$lang === 'en' ? 'Navigate to Site' : 'Navigasi ke Lokasi'}
-							<span class="ml-4">→</span>
 						</Button>
 					</div>
 				</div>
@@ -128,20 +140,42 @@
 							type="text" 
 							required
 							placeholder={$lang === 'en' ? 'NAME / COMPANY' : 'NAMA / PERUSAHAAN'} 
-							class="w-full bg-transparent border-b border-white/10 py-4 text-sm font-bold text-white outline-none focus:border-industrial-yellow transition-all placeholder:uppercase" 
+							class="w-full bg-white/5 border border-white/10 px-4 py-4 text-sm font-bold text-white outline-none focus:border-industrial-yellow transition-all placeholder:uppercase" 
 						/>
 					</div>
 
 					<div>
-						<label for="email" class="block text-[10px] font-black uppercase tracking-widest text-white/40 mb-4">{$lang === 'en' ? 'Communication Port' : 'Port Komunikasi'}</label>
+						<label for="email" class="block text-[10px] font-black uppercase tracking-widest text-white/40 mb-4">{$lang === 'en' ? 'Your Email' : 'Email Anda'}</label>
 						<input 
 							id="email" 
 							name="email"
 							type="email" 
 							required
 							placeholder="EMAIL ADDRESS" 
-							class="w-full bg-transparent border-b border-white/10 py-4 text-sm font-bold text-white outline-none focus:border-industrial-yellow transition-all placeholder:uppercase" 
+							class="w-full bg-white/5 border border-white/10 px-4 py-4 text-sm font-bold text-white outline-none focus:border-industrial-yellow transition-all placeholder:uppercase" 
 						/>
+					</div>
+
+					<div>
+						<label for="subject" class="block text-[10px] font-black uppercase tracking-widest text-white/40 mb-4">{$lang === 'en' ? 'Subject / Request Type' : 'Subjek / Jenis Permintaan'}</label>
+						<div class="relative">
+							<select 
+								id="subject" 
+								name="subject"
+								required
+								class="w-full bg-white/5 border border-white/10 px-4 py-4 text-sm font-bold text-white outline-none focus:border-industrial-yellow transition-all appearance-none cursor-pointer"
+							>
+								<option value="" disabled selected class="bg-industrial-black text-white/40">{$lang === 'en' ? '-- SELECT REQUEST TYPE --' : '-- PILIH JENIS PERMINTAAN --'}</option>
+								<option value="Heavy Equipment Rental" class="bg-industrial-black text-white">{$lang === 'en' ? 'Heavy Equipment Rental' : 'Sewa Alat Berat'}</option>
+								<option value="Project Contracting" class="bg-industrial-black text-white">{$lang === 'en' ? 'Mining / Project Contracting' : 'Kontrak Proyek Pertambangan'}</option>
+								<option value="Equipment Maintenance" class="bg-industrial-black text-white">{$lang === 'en' ? 'Equipment Maintenance' : 'Pemeliharaan Alat Berat'}</option>
+								<option value="General Inquiry" class="bg-industrial-black text-white">{$lang === 'en' ? 'General Inquiry' : 'Pertanyaan Umum'}</option>
+							</select>
+							<!-- Custom Chevron -->
+							<div class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-industrial-yellow text-xs">
+								▼
+							</div>
+						</div>
 					</div>
 
 					<div>
@@ -152,7 +186,7 @@
 							rows="4" 
 							required
 							placeholder={$lang === 'en' ? 'PROJECT REQUIREMENTS' : 'KEBUTUHAN PROYEK'} 
-							class="w-full bg-transparent border-b border-white/10 py-4 text-sm font-bold text-white outline-none focus:border-industrial-yellow transition-all placeholder:uppercase"
+							class="w-full bg-white/5 border border-white/10 px-4 py-4 text-sm font-bold text-white outline-none focus:border-industrial-yellow transition-all placeholder:uppercase"
 						></textarea>
 					</div>
 
@@ -161,10 +195,11 @@
 						disabled={submitting}
 						class="w-full bg-industrial-yellow h-14 sm:h-16 lg:h-20 text-[10px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-black hover:bg-white transition-all rounded-none disabled:opacity-50"
 					>
-						{submitting ? ($lang === 'en' ? 'TRANSMITTING...' : 'MENGIRIM...') : ($lang === 'en' ? 'Send Transmission' : 'Kirim Transmisi')}
+						{submitting ? ($lang === 'en' ? 'SENDING...' : 'MENGIRIM...') : ($lang === 'en' ? 'Send Email' : 'Kirim Email')}
 					</Button>
 				</form>
 			</div>
 		</div>
 	</div>
 </section>
+

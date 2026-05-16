@@ -7,8 +7,8 @@
 
 	let { data }: { data: PageData } = $props();
 	
-	let contentSection: HTMLElement;
-	let teamSection: HTMLElement;
+	let contentSection: HTMLElement | null = null;
+	let teamSection: HTMLElement | null = null;
 
 	onMount(() => {
 		gsap.registerPlugin(ScrollTrigger);

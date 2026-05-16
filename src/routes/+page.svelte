@@ -3,13 +3,35 @@
 	import { onMount } from 'svelte';
 	import { lang } from '$lib/lang';
 	import type { PageData } from './$types';
+	import { ChevronLeft, ChevronRight } from '@lucide/svelte';
 
 	let { data }: { data: PageData } = $props();
 
-	let heroTitle: HTMLElement;
-	let statsSection: HTMLElement;
+	let heroTitle: HTMLElement | null = null;
+	let statsSection: HTMLElement | null = null;
+	let testimonialsContainer: HTMLDivElement | null = null;
+	let canScrollLeft = $state(false);
+	let canScrollRight = $state(true);
+
+	const updateScrollState = () => {
+		if (testimonialsContainer) {
+			canScrollLeft = testimonialsContainer.scrollLeft > 0;
+			canScrollRight = Math.ceil(testimonialsContainer.scrollLeft + testimonialsContainer.clientWidth) < testimonialsContainer.scrollWidth;
+		}
+	};
+
+	const scrollLeft = () => {
+		if (testimonialsContainer) testimonialsContainer.scrollBy({ left: -400, behavior: 'smooth' });
+	};
+
+	const scrollRight = () => {
+		if (testimonialsContainer) testimonialsContainer.scrollBy({ left: 400, behavior: 'smooth' });
+	};
 	
 	onMount(async () => {
+		// Initialize scroll arrows state
+		setTimeout(updateScrollState, 100);
+		
 		const {gsap} = await import ('gsap')
 		const {ScrollTrigger} = await import ('gsap/ScrollTrigger');
 		
@@ -212,14 +234,37 @@
 	<section class="relative z-10 border-t border-white/5 bg-industrial-slate/5 py-16 sm:py-24 lg:py-32 overflow-hidden">
 		<div class="container mx-auto px-6">
 			<div class="flex items-center justify-between mb-12 lg:mb-20">
-				<h2 class="text-lg font-black uppercase tracking-[0.15em] text-white sm:text-xl lg:text-2xl lg:tracking-[0.2em]">{$lang === 'en' ? 'Proof of Work' : 'Bukti Kerja'}</h2>
+				<h2 class="text-lg font-black uppercase tracking-[0.15em] text-white sm:text-xl lg:text-2xl lg:tracking-[0.2em] whitespace-nowrap">{$lang === 'en' ? 'Proof of Work' : 'Bukti Kerja'}</h2>
 				<span class="h-px flex-1 mx-4 sm:mx-8 bg-white/5"></span>
 			</div>
 			
-			<div class="flex gap-4 sm:gap-8 overflow-x-auto pb-8 scrollbar-hide -mx-6 px-6">
+			<div class="relative -mx-6 px-6">
+				<!-- Left Button -->
+				{#if canScrollLeft}
+				<button 
+					onclick={scrollLeft}
+					class="absolute left-2 top-1/2 -translate-y-1/2 z-20 flex h-24 w-16 items-center justify-center border border-white/10 bg-industrial-black text-white hover:border-industrial-yellow hover:text-industrial-yellow transition-all shadow-2xl"
+					aria-label="Scroll Left"
+				>
+					<ChevronLeft size={48} strokeWidth={2.5} />
+				</button>
+				{/if}
+
+				<!-- Right Button -->
+				{#if canScrollRight}
+				<button 
+					onclick={scrollRight}
+					class="absolute right-2 top-1/2 -translate-y-1/2 z-20 flex h-24 w-16 items-center justify-center border border-white/10 bg-industrial-black text-white hover:border-industrial-yellow hover:text-industrial-yellow transition-all shadow-2xl"
+					aria-label="Scroll Right"
+				>
+					<ChevronRight size={48} strokeWidth={2.5} />
+				</button>
+				{/if}
+
+				<div bind:this={testimonialsContainer} onscroll={updateScrollState} class="flex gap-4 sm:gap-8 overflow-x-auto pb-8 scrollbar-hide snap-x snap-mandatory relative z-10">
 				{#each data.testimonials as testimonial}
 					{#if testimonial.is_published}
-						<div class="min-w-[280px] sm:min-w-[350px] lg:min-w-[400px] border border-white/5 bg-industrial-black p-6 sm:p-8 lg:p-12 transition-all hover:bg-industrial-slate/20">
+						<div class="min-w-[280px] sm:min-w-[350px] lg:min-w-[400px] snap-center border border-white/5 bg-industrial-black p-6 sm:p-8 lg:p-12 transition-all hover:bg-industrial-slate/20">
 							<div class="flex items-center gap-6">
 								<div class="h-16 w-16 overflow-hidden bg-industrial-slate">
 									{#if testimonial.client_photo_url}

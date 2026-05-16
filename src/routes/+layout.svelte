@@ -12,8 +12,9 @@
 	// Close mobile menu on navigation
 	$effect(() => {
 		// Subscribe to page changes
-		$page.url.pathname;
-		mobileMenuOpen = false;
+		if ($page.url.pathname) {
+			mobileMenuOpen = false;
+		}
 	});
 
 	// Lock body scroll when menu is open
@@ -170,6 +171,7 @@
 					<h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-white mb-6 lg:mb-8">Contact</h4>
 					<p class="text-[10px] font-bold uppercase tracking-widest leading-loose text-white/40 break-all sm:break-normal">
 						+62 858-4502-0384<br />
+						<a href="mailto:batuah@batuahmandiri.id" class="text-industrial-yellow hover:text-white transition-colors">batuah@batuahmandiri.id</a><br />
 						batuahmandiripersada@gmail.com
 					</p>
 				</div>

@@ -1,4 +1,6 @@
-export const load = async ({ locals }) => {
+import type { PageServerLoad } from './$types';
+
+export const load: PageServerLoad = async ({ locals }) => {
   try {
     if (!locals.supabase) {
       console.error("supabase instance missing from locals");

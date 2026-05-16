@@ -1,4 +1,4 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import { Button } from '$lib/components/ui/button';
 	import type { ActionData } from './$types';
 	
@@ -25,7 +25,7 @@
 					id="email" 
 					name="email" 
 					required 
-					class="mt-2 w-full border-b border-white/10 bg-transparent py-4 text-white outline-none focus:border-industrial-yellow transition-all" 
+					class="mt-2 w-full bg-white/5 border border-white/10 px-4 py-4 text-white outline-none focus:border-industrial-yellow transition-all" 
 				/>
 			</div>
 			<div>
@@ -35,7 +35,7 @@
 					id="password" 
 					name="password" 
 					required 
-					class="mt-2 w-full border-b border-white/10 bg-transparent py-4 text-white outline-none focus:border-industrial-yellow transition-all" 
+					class="mt-2 w-full bg-white/5 border border-white/10 px-4 py-4 text-white outline-none focus:border-industrial-yellow transition-all" 
 				/>
 			</div>
 
@@ -56,3 +56,4 @@
 		</div>
 	</div>
 </section>
+

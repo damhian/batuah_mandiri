@@ -15,7 +15,6 @@ export const GET: RequestHandler = async ({ params, locals: { supabase } }) => {
 	// 2. Try to verify the file exists in Supabase 'media' bucket
 	// In production (Vercel), fs.readFile is restricted. 
 	// We use the Supabase public URL as our source of truth.
-	const { data: publicUrlData } = supabase.storage.from('media').getPublicUrl(filePath);
 
 	// 3. We attempt a quick "check" if file exists by trying to download metadata (optional)
 	// but for efficiency, we can just redirect to Supabase Public URL 

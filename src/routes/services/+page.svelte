@@ -71,7 +71,7 @@
 								<img 
 									src={item.image_url.startsWith('http') ? item.image_url : `/api/storage/${item.image_url}`} 
 									alt={$lang === 'en' ? (item.title_en || 'Service') : (item.title_id || 'Layanan')} 
-									class="h-full w-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[1500ms] ease-out" 
+									class="h-full w-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1500 ease-out" 
 								/>
 							{:else}
 								<div class="w-full h-full flex items-center justify-center bg-industrial-slate opacity-20">

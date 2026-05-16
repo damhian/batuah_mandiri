@@ -70,11 +70,11 @@
 			<img 
 				src={visibleUrl.startsWith('http') || visibleUrl.startsWith('blob:') ? visibleUrl : `/api/storage/${visibleUrl}`} 
 				alt="Thumbnail" 
-				class="w-full h-full object-cover transition-all duration-300 group-hover:scale-105 group-hover:blur-md group-hover:brightness-50"
+				class="w-full h-full object-cover transition-all duration-300 lg:group-hover:scale-105 lg:group-hover:blur-md lg:group-hover:brightness-50"
 			/>
 			
-			<!-- Hover Overlay -->
-			<div class="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+			<!-- Desktop Hover Overlay (hidden on mobile) -->
+			<div class="absolute inset-0 hidden lg:flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
 				<button type="button" onclick={() => isPreviewOpen = true} class="h-10 w-10 bg-black/80 border border-white/20 text-white hover:border-industrial-yellow hover:text-industrial-yellow flex items-center justify-center transition-all">
 					<Eye size={16} />
 				</button>
@@ -90,6 +90,25 @@
 			<button type="button" onclick={handleUploadClick} class="absolute inset-0 w-full h-full flex flex-col items-center justify-center gap-3 text-white/20 hover:text-industrial-yellow hover:bg-white/5 transition-all cursor-pointer">
 				<ImageIcon size={24} />
 				<span class="text-[9px] uppercase tracking-widest font-bold">Upload Image</span>
+			</button>
+		{/if}
+	</div>
+
+	<!-- Mobile/Tablet Action Buttons (always visible below image, hidden on desktop) -->
+	<div class="flex gap-2 lg:hidden">
+		{#if visibleUrl}
+			<button type="button" onclick={() => isPreviewOpen = true} class="flex-1 h-10 bg-white/5 border border-white/10 text-white/60 active:bg-white/10 flex items-center justify-center gap-2 transition-all text-[9px] uppercase tracking-widest font-bold">
+				<Eye size={14} />
+				Preview
+			</button>
+		{/if}
+		<button type="button" onclick={handleUploadClick} class="flex-1 h-10 bg-white/5 border border-white/10 text-white/60 active:bg-white/10 flex items-center justify-center gap-2 transition-all text-[9px] uppercase tracking-widest font-bold">
+			<Upload size={14} />
+			Upload
+		</button>
+		{#if visibleUrl}
+			<button type="button" onclick={handleDelete} class="h-10 px-4 bg-red-500/10 border border-red-500/20 text-red-500/60 active:bg-red-500/20 flex items-center justify-center gap-2 transition-all text-[9px] uppercase tracking-widest font-bold">
+				<Trash2 size={14} />
 			</button>
 		{/if}
 	</div>

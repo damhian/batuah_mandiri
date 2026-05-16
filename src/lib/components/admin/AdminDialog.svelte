@@ -42,7 +42,7 @@
 	
 	<!-- Dialog -->
 	<div 
-		class="fixed left-[50%] top-[50%] z-50 w-full max-w-3xl translate-x-[-50%] translate-y-[-50%] border border-white/10 bg-[#0a0a0a] shadow-2xl flex flex-col max-h-[90vh]"
+		class="fixed inset-0 lg:left-[50%] lg:top-[50%] z-50 w-full lg:max-w-3xl lg:translate-x-[-50%] lg:translate-y-[-50%] lg:inset-auto border border-white/10 bg-[#0a0a0a] shadow-2xl flex flex-col lg:max-h-[90vh]"
 		transition:scale={{ duration: 150, start: 0.95 }}
 	>
 		<!-- Header -->

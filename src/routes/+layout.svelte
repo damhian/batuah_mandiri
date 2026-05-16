@@ -9,6 +9,9 @@
 	let { children } = $props();
 	let mobileMenuOpen = $state(false);
 
+	// Detect admin routes — skip public navbar/footer entirely
+	let isAdmin = $derived($page.url.pathname.startsWith('/admin'));
+
 	// Close mobile menu on navigation
 	$effect(() => {
 		// Subscribe to page changes
@@ -25,6 +28,11 @@
 	});
 
 	onMount(() => {
+		// Only enable Lenis smooth scroll on public-facing pages.
+		// Admin dashboard has its own scrollable containers (textareas, overflow panels)
+		// that Lenis would hijack, breaking their individual scroll behavior.
+		if ($page.url.pathname.startsWith('/admin')) return;
+
 		let cleanup: (() => void) | undefined;
 		
 		lenis.subscribe().then((unsub) => {
@@ -42,6 +50,10 @@
 	<title>PT. Batuah Mandiri Persada | Persada Engineering</title>
 </svelte:head>
 
+{#if isAdmin}
+	<!-- Admin routes: render children directly, admin dashboard layout handles its own nav -->
+	{@render children()}
+{:else}
 <div class="flex min-h-screen flex-col font-sans bg-industrial-black text-white">
 	<!-- Navbar -->
 	<header class="fixed top-0 left-0 z-50 w-full border-b border-black/5 bg-white/95 backdrop-blur-md">
@@ -207,6 +219,7 @@
 		</div>
 	</footer>
 </div>
+{/if}
 
 <style>
 	@keyframes slide-in {

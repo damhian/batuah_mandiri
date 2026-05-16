@@ -318,6 +318,7 @@
 				{/each}
 			</div>
 		</div>
+		</div>
 	</section>
 </div>
 

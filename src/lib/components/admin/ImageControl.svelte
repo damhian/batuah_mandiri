@@ -55,7 +55,7 @@
 </script>
 
 <div class="space-y-4">
-	<label class="block text-[10px] font-bold uppercase tracking-[0.3em] text-white/40 mb-2">Image Attachment</label>
+	<span class="block text-[10px] font-bold uppercase tracking-[0.3em] text-white/40 mb-2">Image Attachment / Lampiran Gambar</span>
 	
 	<!-- Hidden Inputs -->
 	<input type="file" bind:this={fileInput} name={inputName} accept="image/*" onchange={handleFileChange} class="hidden" />
@@ -115,7 +115,7 @@
 
 	<!-- Image Fullscreen Overlay -->
 	{#if isPreviewOpen && visibleUrl}
-		<div class="fixed inset-0 z-[60] bg-black/95 flex flex-col items-center justify-center p-8">
+		<div class="fixed inset-0 z-60 bg-black/95 flex flex-col items-center justify-center p-8">
 			<button type="button" onclick={() => isPreviewOpen = false} class="absolute top-8 right-8 text-white/40 hover:text-white transition-colors">
 				<X size={32} />
 			</button>

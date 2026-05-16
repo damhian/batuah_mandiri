@@ -81,7 +81,7 @@
 						</div>
 						<div class="flex-1 flex flex-col">
 							<span class="text-[10px] font-bold uppercase tracking-[0.5em] text-industrial-yellow">
-								{$lang === 'en' ? 'Industrial Rental' : 'Penyewaan Alat'}
+								{$lang === 'en' ? 'Our Services' : 'Layanan Kami'}
 							</span>
 							<h3 class="mt-4 text-2xl font-black uppercase text-white tracking-tight leading-tight">
 								{$lang === 'en' ? (item.title_en || 'Equipment Unit') : (item.title_id || 'Unit Armada')}

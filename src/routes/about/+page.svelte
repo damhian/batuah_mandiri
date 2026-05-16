@@ -69,8 +69,8 @@
 					Built On <span class="text-industrial-yellow">Steel</span>,<br />
 					Driven By <span class="text-industrial-orange">Precision</span>.
 				{:else}
-					Dibangun Di Atas <span class="text-industrial-yellow">Baja</span>,<br />
-					Digerakkan Oleh <span class="text-industrial-orange">Presisi</span>.
+					Pondasi Sekuat <span class="text-industrial-yellow">Baja</span>,<br />
+					Eksekusi Penuh <span class="text-industrial-orange">Presisi</span>.
 				{/if}
 			</h1>
 			<p class="mt-8 text-base text-white/60 leading-relaxed sm:text-lg md:text-xl lg:text-2xl font-medium whitespace-pre-line">
@@ -132,7 +132,7 @@
 		<div class="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
 			<div>
 				<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-industrial-yellow mb-4">{$lang === 'en' ? 'Leadership' : 'Kepemimpinan'}</h2>
-				<h3 class="text-2xl font-black uppercase text-white sm:text-3xl md:text-5xl">{ $lang === 'en' ? 'The Engineering Mindset' : 'Berpikir Teknis'}</h3>
+				<h3 class="text-2xl font-black uppercase text-white sm:text-3xl md:text-5xl">{ $lang === 'en' ? 'The Engineering Mindset' : 'Mentalitas Engineer'}</h3>
 			</div>
 			<div class="text-left md:text-right">
 				<span class="text-[10px] font-bold uppercase tracking-widest text-white/20">{$lang === 'en' ? 'Scroll to explore the team' : 'Gulir untuk melihat anggota tim'}</span>
@@ -159,7 +159,7 @@
 							{member.role_title}
 						</p>
 						<div class="mt-6 border-t border-white/5 pt-6">
-							<div class="max-h-none lg:max-h-[4.5rem] group-hover:max-h-[500px] overflow-hidden transition-all duration-1000 ease-in-out">
+							<div class="max-h-none lg:max-h-18 group-hover:max-h-[500px] overflow-hidden transition-all duration-1000 ease-in-out">
 								<p class="text-[11px] font-bold uppercase tracking-widest text-white/40 leading-relaxed whitespace-pre-line">
 									{$lang === 'en' ? member.bio : (member.bio_id || member.bio)}
 								</p>

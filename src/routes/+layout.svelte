@@ -200,7 +200,7 @@
 					</p>
 				</div>
 				<div>
-					<h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-white mb-6 lg:mb-8">Contact</h4>
+					<h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-white mb-6 lg:mb-8">{$lang === 'en' ? 'Contact' : 'Kontak'}</h4>
 					<p class="text-[10px] font-bold uppercase tracking-widest leading-loose text-white/40 break-all sm:break-normal">
 						+62 858-4502-0384<br />
 						<a href="mailto:batuah@batuahmandiri.id" class="text-industrial-yellow hover:text-white transition-colors">batuah@batuahmandiri.id</a><br />
